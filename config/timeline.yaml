@@ -462,7 +462,7 @@ custom:
   # 然后在第 3 步的 week_map 中分配给不同的星期。
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   day_plans:
-    all_day:                       # 工作日计划
+    all_day:
       periods: ["morning_report", "evening_summary"]
 
 
