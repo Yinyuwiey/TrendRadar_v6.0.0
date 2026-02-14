@@ -41,7 +41,7 @@ app:
 # ===============================================================
 schedule:
   enabled: true                         # 是否启用调度系统
-  preset: "morning_evening"             # 预设模板名称（见上方说明）
+  preset: "custom"             # 预设模板名称（见上方说明）
 
 
 # ===============================================================
@@ -55,28 +55,36 @@ schedule:
 platforms:
   enabled: true                         # 是否启用热榜平台抓取
   sources:
-    - id: "toutiao"
-      name: "今日头条"
-    - id: "baidu"
-      name: "百度热搜"
     - id: "wallstreetcn-hot"
       name: "华尔街见闻"
     - id: "thepaper"
       name: "澎湃新闻"
-    - id: "bilibili-hot-search"
-      name: "bilibili 热搜"
     - id: "cls-hot"
       name: "财联社热门"
-    - id: "ifeng"
-      name: "凤凰网"
-    - id: "tieba"
-      name: "贴吧"
-    - id: "weibo"
-      name: "微博"
-    - id: "douyin"
-      name: "抖音"
-    - id: "zhihu"
-      name: "知乎"
+    - id: "tencent"
+      name: "腾讯新闻综合早报"
+    - id: "cankaoxiaoxi"
+      name: "参考消息"
+    - id: "jin10"
+      name: "金十数据"
+    - id: "toutiao"
+      name: "今日头条"
+    # - id: "douyin"
+      # name: "抖音"
+    # - id: "bilibili-hot-search"
+      # name: "bilibili 热搜"
+    # - id: "ifeng"
+      # name: "凤凰网"
+    # - id: "douban"
+      # name: "豆瓣热门电影"
+    # - id: "tieba"
+    #   name: "贴吧"
+    # - id: "weibo"
+    #   name: "微博"
+    # - id: "baidu"
+    #   name: "百度热搜"
+    # - id: "zhihu"
+    #   name: "知乎"
 
 
 
@@ -113,20 +121,35 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
-    - id: "hacker-news"
-      name: "Hacker News"
-      url: "https://hnrss.org/frontpage"
+    - id: "36kr"
+      name: "36氪"
+      url: "https://36kr.com/feed"
+      max_age_days: 1
+
+    - id: "banyuetan"
+      name: "半月谈"
+      url: "https://plink.anyfeeder.com/weixin/banyuetan-weixin"
+      max_age_days: 1
+
+    - id: "nanfangzhoumo"
+      name: "南方周末"
+      url: "https://plink.anyfeeder.com/weixin/nanfangzhoumo"
+      max_age_days: 1
+
+    # - id: "hacker-news"
+      # name: "Hacker News"
+      # url: "https://hnrss.org/frontpage"
       # max_age_days: 1               # 示例：只推送1天内的文章
 
-    - id: "ruanyifeng"
-      name: "阮一峰的网络日志"
-      url: "http://www.ruanyifeng.com/blog/atom.xml"
+    # - id: "ruanyifeng"
+      # name: "阮一峰的网络日志"
+      # url: "http://www.ruanyifeng.com/blog/atom.xml"
       # max_age_days: 7               # 示例：推送7天内的文章（更新较慢的博客）
     
-    - id: "yahoo-finance"
-      name: "雅虎财经"
-      url: "https://finance.yahoo.com/news/rssindex"
-      enabled: false                  # 禁用
+    # - id: "yahoo-finance"
+      # name: "雅虎财经"
+      # url: "https://finance.yahoo.com/news/rssindex"
+      # enabled: false                  # 禁用
 
     # 自定义源示例
     # - id: "custom-feed"
@@ -155,7 +178,7 @@ rss:
 #    • 适用场景：避免重复信息干扰
 # ===============================================================
 report:
-  mode: "current"                     # 可选: daily | current | incremental
+  mode: "daily"                     # 可选: daily | current | incremental
                                       # ⚠️ 开启调度系统后，此值会被当前时间段的 report_mode 覆盖
 
 
@@ -170,7 +193,7 @@ report:
 
   rank_threshold: 5                   # 排名高亮阈值
 
-  max_news_per_keyword: 0             # 每个关键词最大显示数量（0=不限制）
+  max_news_per_keyword: 25             # 每个关键词最大显示数量（0=不限制）
 
 
 # ===============================================================
@@ -191,11 +214,11 @@ display:
   #   1. 在此列表中
   #   2. 下方 regions 中对应开关为 true
   region_order:
-    - new_items                       # 1️⃣ 新增热点区域
+    - standalone                      # 4️⃣ 独立展示区
     - hotlist                         # 2️⃣ 热榜区域（关键词匹配）
     - rss                             # 3️⃣ RSS 订阅区域
-    - standalone                      # 4️⃣ 独立展示区
     - ai_analysis                     # 5️⃣ AI 分析区域
+    # - new_items                       # 1️⃣ 新增热点区域
 
   # 推送区域开关
   # 控制各区域是否启用（配合 region_order 使用）
@@ -208,7 +231,7 @@ display:
                                       # 开启后将对 RSS 进行关键词分析并在通知中展示
                                       # 关闭后跳过分析，但独立展示区不受影响
 
-    standalone: false                 # 独立展示区（完整热榜/RSS，不受关键词过滤）
+    standalone: true                 # 独立展示区（完整热榜/RSS，不受关键词过滤）
     ai_analysis: true                 # AI 分析区域
 
   # 📋 独立展示区配置
@@ -218,8 +241,8 @@ display:
   #   - AI 分析：由 ai.include_standalone 开关控制，将完整数据送入 AI 做深度分析
   # 两者共享此处的平台/RSS 配置，但开关互相独立（可只开 AI 分析、不推送展示）
   standalone:
-    platforms: ["zhihu", "wallstreetcn-hot"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: []                     # RSS 源 ID 列表（如 ["hacker-news"]）
+    platforms: ["cankaoxiaoxi", "cls-hot", "wallstreetcn-hot", "jin10"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    rss_feeds: ["36kr"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 
@@ -315,7 +338,7 @@ storage:
   # 支持: Cloudflare R2, 阿里云 OSS, 腾讯云 COS, AWS S3, MinIO 等
   # 建议将敏感信息配置在 GitHub Secrets 或环境变量中
   remote:
-    retention_days: 0                 # 保留天数（0=永久保留）
+    retention_days: 30                 # 保留天数（0=永久保留）
 
     # S3 兼容配置（或使用环境变量 S3_ENDPOINT_URL 等）
     endpoint_url: ""                  # 服务端点
@@ -351,11 +374,11 @@ ai:
   # 完整列表: https://docs.litellm.ai/docs/providers
   # 如果你对于看英文文档比较头疼，那么可以点击页面右下角的 【Ask AI】 ,用中文询问怎么配置 
   
-  model: "deepseek/deepseek-chat"
+  model: "openai/glm-4.7"
 
   api_key: ""                       # API Key（建议使用环境变量 AI_API_KEY）
   
-  api_base: ""                      # 自定义 API 端点（可选，大多数情况留空）
+  api_base: "https://dashscope.aliyuncs.com/compatible-mode/v1"                      # 自定义 API 端点（可选，大多数情况留空）
                                     # 示例: https://api.openai.com/v1（自建代理或兼容接口）
                                     #
                                     # 💡 超级重要：连接任意兼容 OpenAI 协议的模型商
@@ -369,16 +392,16 @@ ai:
                                     #    (原理：前缀 openai/ 强制 LiteLLM 使用 OpenAI 协议格式进行通信)
 
 
-  timeout: 120                      # 请求超时（秒）
+  timeout: 180                      # 请求超时（秒）
 
-  temperature: 1.0                  # 采样温度 (0.0-2.0)
+  temperature: 0.7                  # 采样温度 (0.0-2.0)
                                     # 注意：部分模型(如 gpt-5)可能要求必须为 1.0，否则会报错
   
-  max_tokens: 5000                  # 最大生成 token 数
+  max_tokens: 0                  # 最大生成 token 数
                                     # 注意：如果 API 不支持此参数(报 HTTP 400)，请设为 0 以禁用发送
   # 高级选项
   num_retries: 1                    # 失败重试次数
-  fallback_models: []               # 备用模型列表（可选）
+  fallback_models: [openai/kimi-k2.5]               # 备用模型列表（可选）
                                     # 示例: ["openai/gpt-4o-mini", "openai/deepseek-ai/DeepSeek-V3"]
 
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -443,7 +466,7 @@ ai_analysis:
                                       # GitHub Action 部署默认推送约 20 次（每小时推送一次）， 约 0.1 元/天
                                       # Docker 部署默认推送 48 次(每半小时推送一次)， 约 0.2 元/天
 
-  include_rss: false                # 是否包含 RSS 内容进行分析
+  include_rss: true                # 是否包含 RSS 内容进行分析
   
   include_standalone: true          # 是否将独立展示区数据纳入 AI 分析（只需上方 display 区的 standalone 配置了平台/RSS 即可）
 
