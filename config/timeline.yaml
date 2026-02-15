@@ -431,9 +431,9 @@ custom:
   periods:
 
     morning_report:
-      name: "早间晨报"
-      start: "09:00"
-      end: "11:30"
+      name: "午间新闻"
+      start: "12:00"
+      end: "13:00"
       collect: true                # 是否采集数据（爬取热榜 + RSS）
       analyze: true                # 是否执行 AI 分析
       ai_mode: "current"            # AI 分析模式
