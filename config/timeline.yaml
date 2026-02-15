@@ -433,7 +433,7 @@ custom:
     morning_report:
       name: "早间晨报"
       start: "09:00"
-      end: "11:00"
+      end: "12:00"
       collect: true                # 是否采集数据（爬取热榜 + RSS）
       analyze: true                # 是否执行 AI 分析
       ai_mode: "current"            # AI 分析模式
