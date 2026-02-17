@@ -443,7 +443,7 @@ custom:
 
     evening_summary:
       name: "晚间汇总"
-      start: "19:00"
+      start: "20:00"
       end: "23:00"
       collect: true                # 是否采集数据（爬取热榜 + RSS）
       analyze: true                # 是否执行 AI 分析
