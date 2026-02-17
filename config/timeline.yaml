@@ -429,20 +429,9 @@ custom:
   #       系统会自动识别为跨越午夜的时间段。
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   periods:
-    noon_report:
-      name: "午间新闻"
-      start: "11:00"
-      end: "12:30"
-      collect: true                # 是否采集数据（爬取热榜 + RSS）
-      analyze: true                # 是否执行 AI 分析
-      ai_mode: "current"            # AI 分析模式
-      push: true                  # 是否发送推送通知
-      report_mode: "current"         # 报告模式
-      # once 继承 default（push: true）→ 窗口内只推一次
-
     evening_summary:
       name: "晚间汇总"
-      start: "20:00"
+      start: "19:00"
       end: "23:00"
       collect: true                # 是否采集数据（爬取热榜 + RSS）
       analyze: true                # 是否执行 AI 分析
@@ -461,7 +450,7 @@ custom:
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   day_plans:
     all_day:
-      periods:["noon_report", "evening_summary"]
+      periods:["evening_summary"]
 
 
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
