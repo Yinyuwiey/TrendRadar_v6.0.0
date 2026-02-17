@@ -304,6 +304,9 @@
 宇树
 智元
 灵犀
+松延
+魔法原子
+银河通用
 /\bAgiBot\b/i
 众擎
 /\bEngineAI\b/i
