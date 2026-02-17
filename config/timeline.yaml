@@ -429,16 +429,16 @@ custom:
   #       系统会自动识别为跨越午夜的时间段。
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   periods:
+
     evening_summary:
       name: "晚间汇总"
       start: "19:00"
-      end: "23:00"
-      collect: true                # 是否采集数据（爬取热榜 + RSS）
-      analyze: true                # 是否执行 AI 分析
-      ai_mode: "daily"            # AI 分析模式
-      push: true                  # 是否发送推送通知
-      report_mode: "daily"         # 报告模式
-      # once 继承 default（push: true）→ 窗口内只推一次
+      end: "22:30"
+      analyze: true                # 晚间做 AI 分析
+      ai_mode: "daily"             # AI 也分析全天内容
+      push: true                   # 晚间推送
+      report_mode: "daily"         # 当日全部新闻汇总
+      # once 继承 default（analyze: true, push: true）→ 只分析/推送一次
 
 
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -449,8 +449,8 @@ custom:
   # 然后在第 3 步的 week_map 中分配给不同的星期。
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   day_plans:
-    all_day:
-      periods:["evening_summary"]
+    allday:                       # 工作日计划
+      periods: ["evening_summary"]
 
 
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -459,13 +459,13 @@ custom:
   # 1=周一  2=周二  3=周三  4=周四  5=周五  6=周六  7=周日
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   week_map:
-    1: "all_day"                   # 周一 → 工作日计划
-    2: "all_day"                   # 周二
-    3: "all_day"                   # 周三
-    4: "all_day"                   # 周四
-    5: "all_day"                   # 周五
-    6: "all_day"                   # 周六 → 周末计划
-    7: "all_day"                   # 周日
+    1: "allday"                   # 周一 → 工作日计划
+    2: "allday"                   # 周二
+    3: "allday"                   # 周三
+    4: "allday"                   # 周四
+    5: "allday"                   # 周五
+    6: "allday"                   # 周六 → 周末计划
+    7: "allday"                   # 周日
 
 
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
