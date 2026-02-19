@@ -277,6 +277,8 @@
 /(?<![a-zA-Z])ai(?![a-zA-Z])/
 人工智能
 大模型
+大语言模型
+多模态模型
 /\bLLM\b
 /\bMCP\b
 /\bOpenClaw\b/i
