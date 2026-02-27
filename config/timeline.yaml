@@ -430,9 +430,9 @@ custom:
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   periods:
     moring_report:
-      name: "晨间新闻"
-      start: "07:00"
-      end: "10:00"
+      name: "早间新闻"
+      start: "09:30"
+      end: "12:00"
       analyze: true                
       ai_mode: "current"             
       push: true                   
