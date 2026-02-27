@@ -429,6 +429,15 @@ custom:
   #       系统会自动识别为跨越午夜的时间段。
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   periods:
+    moring_report:
+      name: "晨间新闻"
+      start: "8:00"
+      end: "10:00"
+      analyze: true                
+      ai_mode: "current"             
+      push: true                   
+      report_mode: "current"         
+      # once 继承 default（analyze: true, push: true）→ 只分析/推送一次
 
     evening_summary:
       name: "晚间汇总"
@@ -450,7 +459,7 @@ custom:
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   day_plans:
     allday:                       # 工作日计划
-      periods: ["evening_summary"]
+      periods: ["moring_report", "evening_summary"]
 
 
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
