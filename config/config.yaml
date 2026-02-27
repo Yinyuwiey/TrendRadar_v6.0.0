@@ -136,6 +136,11 @@ rss:
       url: "https://plink.anyfeeder.com/weixin/nanfangzhoumo"
       max_age_days: 1
 
+    - id: "juyadaily"
+      name: "橘鸦AI早报"
+      url: "https://imjuya.github.io/juya-ai-daily/rss.xml"
+      max_age_days: 1
+
     # - id: "hacker-news"
       # name: "Hacker News"
       # url: "https://hnrss.org/frontpage"
@@ -193,7 +198,7 @@ report:
 
   rank_threshold: 5                   # 排名高亮阈值
 
-  max_news_per_keyword: 25             # 每个关键词最大显示数量（0=不限制）
+  max_news_per_keyword: 20             # 每个关键词最大显示数量（0=不限制）
 
 
 # ===============================================================
@@ -214,9 +219,9 @@ display:
   #   1. 在此列表中
   #   2. 下方 regions 中对应开关为 true
   region_order:
-    - standalone                      # 4️⃣ 独立展示区
     - hotlist                         # 2️⃣ 热榜区域（关键词匹配）
     - rss                             # 3️⃣ RSS 订阅区域
+    - standalone                      # 4️⃣ 独立展示区
     - ai_analysis                     # 5️⃣ AI 分析区域
     # - new_items                       # 1️⃣ 新增热点区域
 
@@ -241,8 +246,8 @@ display:
   #   - AI 分析：由 ai.include_standalone 开关控制，将完整数据送入 AI 做深度分析
   # 两者共享此处的平台/RSS 配置，但开关互相独立（可只开 AI 分析、不推送展示）
   standalone:
-    platforms: ["cankaoxiaoxi", "cls-hot", "wallstreetcn-hot", "jin10"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: ["36kr"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
+    platforms: ["cankaoxiaoxi", "cls-hot", "wallstreetcn-hot"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    rss_feeds: ["36kr", "juyadaily"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 
@@ -401,7 +406,7 @@ ai:
                                     # 注意：如果 API 不支持此参数(报 HTTP 400)，请设为 0 以禁用发送
   # 高级选项
   num_retries: 1                    # 失败重试次数
-  fallback_models: [gemini/gemini-3-pro-preview]               # 备用模型列表（可选）
+  fallback_models: [gemini/gemini-3-flash-preview]               # 备用模型列表（可选）
                                     # 示例: ["openai/gpt-4o-mini", "openai/deepseek-ai/DeepSeek-V3"]
 
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -454,7 +459,7 @@ ai_analysis:
   mode: "follow_report"
 
   # 分析内容配置
-  max_news_for_analysis: 150        # 热榜+RSS 合计参与分析的新闻数量上限（控制成本关键项）
+  max_news_for_analysis: 200        # 热榜+RSS 合计参与分析的新闻数量上限（控制成本关键项）
                                     # 热榜优先占用配额，RSS 使用剩余配额；独立展示区不受此限制
                                     # 推送消息顶部会显示实际的 AI 分析数供参考
 
