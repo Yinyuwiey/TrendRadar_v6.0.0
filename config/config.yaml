@@ -121,6 +121,11 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
+    - id: "xinhuashe"
+      name: "新华社"
+      url: "https://plink.anyfeeder.com/newscn/whxw"
+      max_age_days: 1
+    
     - id: "36kr"
       name: "36氪"
       url: "https://36kr.com/feed"
@@ -247,7 +252,7 @@ display:
   # 两者共享此处的平台/RSS 配置，但开关互相独立（可只开 AI 分析、不推送展示）
   standalone:
     platforms: ["cankaoxiaoxi", "cls-hot", "wallstreetcn-hot"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: ["36kr", "juyadaily"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
+    rss_feeds: ["36kr", "xinhuashe", "juyadaily"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 
