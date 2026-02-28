@@ -433,7 +433,7 @@ custom:
       name: "早间新闻"
       start: "09:30"
       end: "12:00"
-      analyze: true                
+      analyze: false                
       ai_mode: "current"             
       push: true                   
       report_mode: "current"         
