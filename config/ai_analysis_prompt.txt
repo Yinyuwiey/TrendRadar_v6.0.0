@@ -163,7 +163,7 @@
 {rss_content}
 
 ## 独立展示区
-以下为独立展示的完整热榜/RSS 数据（不受关键词过滤），请按板块说明中 standalone_summaries 的要求处理。
+以下为独立展示的完整热榜/RSS 数据（不受关键词过滤），请按板块说明中 standalone_summaries 的要求处理。juyadaily（橘鸦AI日报）平台除外，无需对该平台进行概括和展示，因为该平台的标题无实质性内容。
 {standalone_content}
 
 ---
